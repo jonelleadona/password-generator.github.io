@@ -9,15 +9,12 @@ var confrimLowerCase = ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "
 var confrimUpperCase = ()
  // Add uppercase function 
 
- // Responds to click
-get.addEventListener("click", function () {
-    var = generatePassword ();
-    document.getElementById("password");
-});
  // Add event listener to generate button
-var generateBtn = document.querySelector("#generate");
-  generateBtn.addEventListener("click", writePassword);
+ var generateBtn = document.querySelector("#generate");
+ generateBtn.addEventListener("click", writePassword);
 
+ // Start function
+ 
 
 // TODO: Add logic to prompt user for criterias. Store user's choices in variables.
 // TODO: Based on user's criterias, create a loop to generate each character of the password randomly
@@ -34,6 +31,4 @@ function writePassword() {
 
 }
 
-// Add event listener to generate button
-var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", writePassword);
+
