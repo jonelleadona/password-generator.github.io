@@ -6,8 +6,10 @@
 
  // use querySelector when referencing an element in the HTML
  // Add event listener to generate button
-var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", writePassword);
+
+ var generateBtn = document.querySelector("#generate");
+ generateBtn.addEventListener("click", writePassword);
+
 
 // TODO: Add logic to prompt user for criterias. Store user's choices in variables.
 // TODO: Based on user's criterias, create a loop to generate each character of the password randomly
@@ -17,7 +19,13 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() 
 {
-  var length = prompt("Please enter password length");
+  var specialChar = ("!#$%&*()+-./\=><?;");
+  var number = ("0123456789");
+  var lowerCase = ("abcdefghijklmnopqrstuvwxyz");
+  var upper = lower.toUpperCase();
+  var choices;
+
+  var length = prompt("Please enter password length. Length should be betweeb 8 to 128");
   var lengthInt = parseInt(length);
   
   if (lengthInt < 8 || lengthInt > 128) 
@@ -40,12 +48,20 @@ function generatePassword()
     return;  
   }
   
+  if (!specialChar && !number && !upper && !lowerCase)
+  {
+    choices = alert("Please select a criteria");
+  }
+
+
+
   for (var i = 0; i < lengthInt; ++i) 
   {
 
   }
 
 }
+
 
 // Write password to the #password input
 function writePassword() 
