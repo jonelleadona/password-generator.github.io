@@ -42,7 +42,7 @@ function generatePassword()
   {
     validChar = lowerCase + upper + specialChar + number;
   }
-  else if(userLower   === true &&
+  else if(useLower   === true &&
           useUpper    === true &&
           useSpecial  === true) 
   {
