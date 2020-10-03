@@ -1,29 +1,36 @@
 
- 
+ // Generate button gives button function upon click
  var generateBtn = document.querySelector("#generate");
  generateBtn.addEventListener("click", writePassword);
 
+ //Function start
 function generatePassword() 
 {
+  // String variables
   var specialChar = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
   var number = "0123456789";
   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
   var upper = lowerCase.toUpperCase();
   
+  // Password length will be asked in prompt 
+  // parsInt 
   var length = prompt("Please enter password length. Length should be betweeb 8 to 128");
   var lengthInt = parseInt(length);
   
+  //If password less than 8 OR greater than 128
   if (lengthInt < 8 || lengthInt > 128) 
   {  
     alert("Your input is invalid");
     return;
   }
  
+  //Vars assigned to confirms
   var useLower = confirm("Do you want to use lowercase characters in password?");
   var useUpper = confirm("Do you want to use uppercase characters in password?");
   var useSpecial = confirm("Do you want to use special characters in password?");
   var useNumeric = confirm("Do you want to use numeric characters in password?");
 
+  // If all 4 are not yes
   if (useLower   !== true &&
       useUpper   !== true &&
       useSpecial !== true &&
@@ -35,6 +42,7 @@ function generatePassword()
   
   var validChar = "";
 
+  // If all 4 are yes
   if (useLower  === true &&
       useUpper   === true &&
       useSpecial === true &&
@@ -42,6 +50,8 @@ function generatePassword()
   {
     validChar = lowerCase + upper + specialChar + number;
   }
+
+  // If 3 are yes and 1 no
   else if(useLower   === true &&
           useUpper    === true &&
           useSpecial  === true) 
@@ -52,7 +62,7 @@ function generatePassword()
           useUpper   === true &&
           useNumeric === true)
   {
-    validChar = lowerCase + upper + numerber;
+    validChar = lowerCase + upper + number;
   }    
   else if(useLower   === true &&
           useSpecial === true &&
@@ -66,6 +76,8 @@ function generatePassword()
   {
     validChar = upper + specialChar + number;
   }
+
+  // If 2 are no and 2 are yes
   else if(useLower === true &&
           useUpper === true)
   {
@@ -94,6 +106,8 @@ function generatePassword()
           useNumeric === true)
   {
   }
+
+  //If only one yes
   else if(useLower === true)
   {
   }
@@ -107,6 +121,7 @@ function generatePassword()
   {
   }
 
+  // For loop 
   var securePassword = "";
   console.log(validChar);
   for (var i = 0; i < lengthInt; ++i) 
@@ -116,12 +131,13 @@ function generatePassword()
     console.log(randomIndex)
     securePassword += randomChar;
   }
+    // Returns back to original point
     return securePassword;
 }
-// Write password to the #password input
+//  
 function writePassword() 
 {
-  var password = generatePassword(); // TODO: Write generatePassword() function
+  var password = generatePassword(); 
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
