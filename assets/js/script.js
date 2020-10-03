@@ -1,30 +1,15 @@
-// Generate password based on user criteria
-// NOTE: generatePassword() would still work if declared below writePassword() because of how JS works, but still good practice to declare functions before calling them.
-// TODO: Put generatePasword() function here
 
- // Add uppercase function 
-
- // use querySelector when referencing an element in the HTML
- // Add event listener to generate button
-
+ 
  var generateBtn = document.querySelector("#generate");
  generateBtn.addEventListener("click", writePassword);
 
-
-// TODO: Add logic to prompt user for criterias. Store user's choices in variables.
-// TODO: Based on user's criterias, create a loop to generate each character of the password randomly
-// TODO: Figure out how to store each newly generated character (What will be the type of the variable? How will I add new character(s) to the variable?)
-// NOTE: generatePassword needs to return the password so the value can be stored in 'var password' in writePassword()
-// NOTE: Look into ASCII table on how it can help with password generation
-
 function generatePassword() 
 {
-  var specialChar = ("!#$%&*()+-./\=><?;");
-  var number = ("0123456789");
-  var lowerCase = ("abcdefghijklmnopqrstuvwxyz");
-  var upper = lower.toUpperCase();
-  var choices;
-
+  var specialChar = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+  var number = "0123456789";
+  var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+  var upper = lowerCase.toUpperCase();
+  
   var length = prompt("Please enter password length. Length should be betweeb 8 to 128");
   var lengthInt = parseInt(length);
   
@@ -48,27 +33,96 @@ function generatePassword()
     return;  
   }
   
-  if (!specialChar && !number && !upper && !lowerCase)
+  var validChar = "";
+
+  if (useLower  === true &&
+      useUpper   === true &&
+      useSpecial === true &&
+      useNumeric === true)
   {
-    choices = alert("Please select a criteria");
+    validChar = lowerCase + upper + specialChar + number;
+  }
+  else if(userLower   === true &&
+          useUpper    === true &&
+          useSpecial  === true) 
+  {
+    validChar = lowerCase + upper + specialChar;
+  }
+  else if(useLower   === true &&
+          useUpper   === true &&
+          useNumeric === true)
+  {
+    validChar = lowerCase + upper + numerber;
+  }    
+  else if(useLower   === true &&
+          useSpecial === true &&
+          useNumeric === true)
+  {
+    validChar = lowerCase + specialChar + number;
+  }
+  else if(useUpper   === true &&
+          useSpecial === true &&
+          useNumeric === true)
+  {
+    validChar = upper + specialChar + number;
+  }
+  else if(useLower === true &&
+          useUpper === true)
+  {
+    validChar = lowerCase + upper;
+  }
+  else if(useLower   === true &&
+          useSpecial === true)
+  {
+    validChar = lowerCase + specialChar;
+  }
+  else if(useLower   === true &&
+          useNumeric === true)
+  {
+    validChar = lowerCase + number;
+  }
+  else if(useUpper   === true &&
+          useSpecial === true)
+  {
+    validChar = upper + specialChar;
+  }
+  else if(useUpper   === true &&
+          useNumeric === true)
+  {
+  }
+  else if(useSpecial === true &&
+          useNumeric === true)
+  {
+  }
+  else if(useLower === true)
+  {
+  }
+  else if(useLower === true)
+  {
+  }
+  else if(useSpecial === true)
+  {
+  }
+  else if (useNumeric === true)
+  {
   }
 
-
-
+  var securePassword = "";
+  console.log(validChar);
   for (var i = 0; i < lengthInt; ++i) 
   {
-
+    var randomIndex = Math.floor(Math.random() * validChar.length);
+    var randomChar = validChar[randomIndex];
+    console.log(randomIndex)
+    securePassword += randomChar;
   }
-
+    return securePassword;
 }
-
-
 // Write password to the #password input
 function writePassword() 
 {
   var password = generatePassword(); // TODO: Write generatePassword() function
   var passwordText = document.querySelector("#password");
-
 
   passwordText.value = password;
 }
