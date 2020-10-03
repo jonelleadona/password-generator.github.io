@@ -43,7 +43,7 @@ function generatePassword()
   var validChar = "";
 
   // If all 4 are yes
-  if (useLower  === true &&
+  if (useLower   === true &&
       useUpper   === true &&
       useSpecial === true &&
       useNumeric === true)
@@ -52,7 +52,7 @@ function generatePassword()
   }
 
   // If 3 are yes and 1 no
-  else if(useLower   === true &&
+  else if(useLower    === true &&
           useUpper    === true &&
           useSpecial  === true) 
   {
@@ -101,34 +101,36 @@ function generatePassword()
   else if(useUpper   === true &&
           useNumeric === true)
   {
+    validChar = upper + number;
   }
   else if(useSpecial === true &&
           useNumeric === true)
   {
+    validChar = specialChar + number;
   }
-
   //If only one yes
-  else if(useLower === true)
+  else if(useUpper   === true)
   {
+    validChar = upper;
   }
-  else if(useLower === true)
+  else if(useLower   === true)
   {
+    validChar = lowerCase;
   }
   else if(useSpecial === true)
   {
+    validChar = specialChar;
   }
-  else if (useNumeric === true)
+  else if(useNumeric === true)
   {
+    validChar = number;
   }
-
   // For loop 
   var securePassword = "";
-  console.log(validChar);
   for (var i = 0; i < lengthInt; ++i) 
   {
     var randomIndex = Math.floor(Math.random() * validChar.length);
-    var randomChar = validChar[randomIndex];
-    console.log(randomIndex)
+    var randomChar  = validChar[randomIndex];
     securePassword += randomChar;
   }
     // Returns back to original point
@@ -142,5 +144,3 @@ function writePassword()
 
   passwordText.value = password;
 }
-
-
